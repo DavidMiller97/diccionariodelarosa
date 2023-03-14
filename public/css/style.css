@@ -1,0 +1,1564 @@
+/*Fuentes*/
+@font-face{
+
+    font-family: "AGaramondPro";
+    src: url("../assets/fuente/AGaramondProRegular.otf") format("opentype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face{
+
+    font-family: "AGaramondProBold";
+    src: url("../assets/fuente/AGaramondProBold.otf") format("opentype");
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face{
+
+    font-family: "AGaramondProItalic";
+    src: url("../assets/fuente/AGaramondProItalic.otf") format("opentype");
+    font-style: italic;
+    font-weight: normal;
+}
+/*Estilos*/
+*{
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+a{
+
+    text-decoration: none;
+    color: #333333;
+}
+
+body{ 
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/************************** Spinner ************************/
+.contenedor-spinner{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid black;
+    border-color: black transparent black transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+/***********************************************************/
+/************************** Modal ************************/
+
+.modal-contenedor{
+
+    position: fixed;
+    inset: 0 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.5s;
+    z-index: 10;
+}
+
+.modal-contenedor.active{
+
+    transform: translateY(0%);
+}
+
+.modal{
+
+    width: 40%;
+    background-color: white;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    box-shadow: 4px 9px 10px rgba(0,0,0,0.75);
+    z-index: 10;
+    max-height: 600px;
+}
+
+.modal-imagen{
+
+    width: 40%;
+    background-color: white;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 4px 9px 10px rgba(0,0,0,0.75);
+}
+
+.manuscrito-imagen{
+
+    width: 100%;
+    height: 100%;
+}
+
+.manuscrito-imagen img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modal h2{
+
+    font-family: "AGaramondPro";
+    font-size: 35px;
+    border-bottom: 1px solid black;
+    font-weight: lighter;
+}
+
+.input-buscar{
+
+    width: 80%;
+    display: flex;
+    border: 1px solid black;
+}
+
+.input-caja{
+
+    width: 90%;
+}
+
+.input-caja input{
+
+    outline: none;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+    font-size: 20px;
+    font-family: "AGaramondPro";
+    font-weight: lighter;
+}
+
+.lapiz{
+
+    width: 40px;
+    cursor: pointer;
+    padding: 3px;
+}
+
+.lapiz img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.resultados{
+
+    width: 80%;
+    height: 40%;
+    overflow-y: scroll;
+}
+
+.resultados ul{
+
+    margin-left: 10%;
+    list-style:circle;
+}
+
+.resultados .autor-busqueda {
+
+    cursor: pointer;
+}
+
+.modal h3{
+
+    font-family: "AGaramondPro";
+    font-size: 20px;
+    color: #bb272d;
+    font-weight: lighter;
+    margin-left: 10%;
+    align-self: flex-start;
+}
+
+.cerrar{
+
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.cerrar img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/**********************************************************/
+/********************* Modal libro ************************/
+
+.modal #autor{
+
+    font-family: "AGaramondPro";
+    font-size: 20px;
+    color: black;
+    font-weight: lighter;
+    margin-left: 10%;
+    align-self: flex-start;
+}
+
+.modal #autor span{
+
+    color: #bb272d;
+}
+
+.info-libro{
+
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+    margin-left: 10%;
+}
+
+.info-libro h4{
+
+    font-family: "AGaramondPro";
+    font-size: 18px;
+    color: black;
+    font-weight: lighter;
+    margin-left: 10%;
+}
+
+.info-libro h4 span{
+
+    color: #bb272d;
+}
+
+.info-localizacion{
+
+    margin-left: 10%;
+    border: 1px solid black;
+    padding: 1rem;
+    margin-left: 10%;
+}
+
+.info-localizacion h4{
+
+    font-size: 16px;
+}
+
+.libros{
+
+    width: 80%;
+    height: 30%;
+    overflow-y: scroll;
+    border: 1px solid black;
+    padding: 2rem;
+    margin-left: 10%;
+}
+
+.informacion{
+
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+/*********************************************************/
+/********************* Paginacion ************************/
+.contenedor-links{
+
+    display: flex;
+    flex-direction: column;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.contenedor-links a{
+
+    align-self: flex-end;
+}
+
+.lista{
+
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    height: 30px;
+}
+
+.lista .active{
+    
+    color: #bb272d;
+    font-family: "AGaramondProBold";
+}
+
+.pagina{
+
+    font-family: "AGaramondPro";
+}
+
+.links{
+
+    display: flex;
+    gap: 50px;
+    border-top: 1px solid black;
+}
+
+.links h4{
+
+    font-family: "AGaramondPro";
+}
+.pagination{
+
+    display: flex;
+    overflow: hidden;
+
+}
+.segunda-paginacion{
+
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    font-family: "AGaramondPro";
+}
+
+.segunda-paginacion .disabled{
+
+    color: gray;
+}
+
+.paginacion-footer{
+
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+/*****************************************************/
+/********************* Header ************************/
+.contenedor-header{
+
+    display: flex;
+    padding: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+
+    width: 125px;
+    height: 125px;
+}
+
+.logo a{ 
+
+    width: 100%;
+    height: 100%;
+}
+
+.logo img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.buscador{
+
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.buscador img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.menu{
+
+    width: 60%;
+}
+
+.menu ul{
+
+    list-style: none;
+    display: flex;
+    gap: 80px;
+}
+
+.menu ul li{
+
+    font-family: "AGaramondPro";
+    font-size: 30px;
+    color: #333333;
+}
+/*****************************************************/
+/********************* Menu ************************/
+
+.hamburguer-contenedor{
+
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+.hamburger-menu {
+
+    transition: transform 0.5s;
+    height: 50px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hamburger-menu .line-1, .hamburger-menu .line-2, .hamburger-menu .line-3 {
+
+    border-top: 3px solid #000;
+    display: block;
+    transition: margin 0.5s, transform 0.5s;
+    width: 50px;
+}
+
+.hamburger-menu .line-2 {
+
+    margin: 10px 0;
+}
+
+.hamburger-menu.toggle {
+
+    padding: 25px 0;
+}
+
+.hamburger-menu.toggle .line-1, .hamburger-menu.toggle .hamburger-menu .line-2, .hamburger-menu .hamburger-menu.toggle .line-2, .hamburger-menu.toggle .hamburger-menu .line-3, .hamburger-menu .hamburger-menu.toggle .line-3 {
+
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.toggle .line-2 {
+
+    margin: -3px 0;
+    opacity: 0;
+
+}
+
+.hamburger-menu.toggle .line-3 {
+
+    transform: rotate(-45deg);
+}
+
+.menu-responsive{
+
+    position: fixed;
+    width: 250px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(250px);
+    transition: transform .3s;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 1;
+}
+
+.menu-responsive.active{
+
+    transform: translateX(0);
+}
+
+.menu-responsive ul{
+
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu-responsive ul li{
+
+    font-family: "AGaramondPro";
+    font-size: 30px;
+    color: #333333;
+}
+
+/*****************************************************/
+/****************** Presentacion *********************/
+#presentacion{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-presentacion{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    border-top: 1px solid black;
+    padding-top: 50px;
+}
+
+.contenedor-presentacion h1{
+
+    font-family: "AGaramondPro";
+    font-size: 50px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.contenedor-presentacion h1 span{
+
+    font-family: "AGaramondProItalic";
+}
+
+.libro{
+
+    width: 300px;
+    height: 250px;
+}
+
+.libro img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.arreglo{
+
+    width: 180px;
+    height: 50px;
+}
+
+.arreglo img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/*****************************************************/
+/****************** Presentacion *********************/
+#diccionario{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-diccionario{
+
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border-top: 1px solid black;
+    padding-top: 30px;
+}
+
+.contenedor-diccionario h2{
+
+    font-family: "AGaramondPro";
+    font-size: 40px;
+    padding: 0px 25px;
+    padding-bottom: 30px;
+    color: #333333;
+    display: none;
+}
+
+.contenedor-diccionario .arreglo{
+
+    align-self: center;
+    margin-top: 30px;
+}
+
+.presentacion-diccionario{
+
+    width: 80%;
+    height: 360px;
+    background-color: #e0e0e0;
+    align-self: center;
+    background-image: url("../assets/images/iconos/arreglopresentacion.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.presentacion-diccionario a{ 
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.presentacion-diccionario img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+}
+
+.presentacion-diccionario .texto{
+
+    width: 80%;
+    font-family: "AGaramondPro";
+}
+
+.presentacion-diccionario .texto h3{
+
+    width: 75%;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+    color: #333333;
+}
+
+.presentacion-diccionario .texto p{
+
+    padding: 15px;
+    color: #333333;
+}
+
+.ojo{
+
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.ojo img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/*****************************************************/
+/************************ Texto *********************/
+
+#inicio .arreglo{
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.folio{
+
+    padding: 2%;
+}
+
+.container{
+
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: center;
+}
+
+.contenedor-texto{
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: #e0e0e0;
+    font-family: "AGaramondPro";
+}
+
+.folio-traducido{
+
+    width: 48%;
+    padding: 20px;
+    background-color: white;
+    height: 828px;
+    overflow-y: scroll;
+}
+
+.folio-traducido p{
+
+    font-family: "AGaramondPro";
+    font-size: 18px;
+    margin: 5px;
+}
+
+.folio-imagen{
+
+    width: 48%;
+    height: 828px;
+    background-color: white;
+}
+
+.folio-imagen img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card{
+
+    border: 1px solid black;
+    box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.75);
+}
+
+.card-table{
+
+    display: inline-block;
+}
+
+.titulo{
+
+    text-align: center;
+    font-size: 20px !important;
+}
+.tabla{
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tabla .celda{
+
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.tabla .celda p{
+
+    font-size: 12px;
+}
+
+.contenedor-opciones{
+
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    font-family: "AGaramondPro";
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.contenedor-radio {
+
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+  .contenedor-radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    inset: 0 0 0 0;
+    width: 25px;
+    height: 25px;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #e0e0e0;
+    z-index: -1;
+  }
+  
+  .contenedor-radio:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  .contenedor-radio input:checked ~ .checkmark {
+    background-color: black;
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  .contenedor-radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  .contenedor-radio .checkmark:after {
+
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.contenedor-opciones h3{
+
+    font-weight: normal;
+    font-size: 25px;
+}
+
+.contenedor-opciones h4, .contenedor-opciones label{
+
+    font-size: 20px;
+}
+
+.contenedor-opciones .info{
+
+    width: 50%;
+}
+
+.contenedor-opciones .info-opciones{
+
+    width: 50%;
+}
+
+.contenedor-opciones .info-opciones .opciones form{
+
+    display: flex;
+    gap: 25px;
+    width: 100%;
+}
+
+.contenedor-titulo{
+
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: none;
+}
+
+.contenedor-titulo h2{
+
+    font-family: "AGaramondPro";
+    font-size: 30px;
+    width: 16%;
+    border-bottom: 1px solid black;
+}
+
+.boton-manuscrito{
+
+    align-self: flex-end;
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: white;
+    margin: 1rem;
+    cursor: pointer;
+    font-family: "AGaramondPro";
+    display: none;
+}
+.marcado {
+
+    background-color: yellow;
+}
+
+/*****************************************************/
+/************************ Footer *********************/
+.footer{
+
+    width: 100%;
+    background-color: #221d1d;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.footer .logos{
+
+    width: 50%;
+    display: flex;
+    border-bottom: 1px solid white;
+    margin: 50px;
+    margin-right: 10px;
+}
+
+.logos .logo-unam, .logos .logo-biblio{
+
+    width: 50%;
+    height: 125px;
+}
+
+.logos .logo-biblio a, .logos .logo-unam a{
+
+    width: 100%;
+    height: 100%;
+}
+
+.logos .logo-unam img, .logos .logo-biblio img{
+
+    width: 100%;
+    height: 100%; 
+    object-fit: contain;
+}
+
+/*****************************************************/
+/************************ Creditos *******************/
+#creditos{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-creditos{
+
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border-top: 1px solid black;
+    padding-top: 30px;
+}
+
+.contenedor-creditos .arreglo{
+
+    align-self: center;
+    margin-top: 30px;
+}
+
+.creditos{
+
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.credito{
+
+    text-align: center;
+}
+
+.credito h4{
+
+    font-family: "AGaramondPro";
+    font-size: 25px;
+    font-weight: lighter;
+}
+
+.credito h3{
+
+    font-family: "AGaramondProBold";
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.credito:first-child h3{
+
+    font-size: 35px;
+}
+
+/*****************************************************/
+/************************ Registros *******************/
+
+.registro{
+
+    cursor: pointer;
+}
+
+.preloader-busqueda{
+    position: fixed;
+    background-color: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .control-libros-autor{
+      display: none;
+      width: 220px;
+      height: 100px;
+      position: fixed;
+      border: 1px solid black;
+      box-shadow: 0px 0px 9px 2px rgba(0,0,0,0.75);
+      bottom: 10px;
+      right: 10px;
+      background-color: white;
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+  }
+
+  .control-libros-autor .controls{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;  
+  }
+
+  .cerrar-controls{
+
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: -10px;
+    left: -25px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .cerrar-controls img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      
+  }
+
+/*********************************************************************************************************/
+/****************************************   Media Queries    *********************************************/
+/**********************************************************************************************************/
+
+@media screen and (max-width: 809px) {
+
+    /************************** Modal ************************/
+
+    .modal{
+
+        width: 90%;
+    }
+
+   
+    .modal-imagen{
+
+        width: 90%;
+    }
+
+    /*****************************************************/
+    /********************* Header ************************/
+
+    .contenedor-header{
+
+        display: flex;
+        padding: 50px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo{
+
+        width: 62.5px;
+        height: 62.5px;
+    }
+
+    .menu{
+
+        display: none;
+    }
+
+    /*****************************************************/
+    /********************* Menu ************************/
+
+
+    .hamburger-menu {
+
+        display: flex;
+    }
+
+    .menu-responsive{
+
+        position: fixed;
+        width: 250px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(250px);
+        transition: transform .3s;
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+
+    .menu-responsive.active{
+
+        transform: translateX(0);
+    }
+
+    .menu-responsive ul{
+
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .menu-responsive ul li{
+
+        font-family: "AGaramondPro";
+        font-size: 30px;
+        color: #333333;
+    }
+
+
+    /*****************************************************/
+    /****************** Presentacion *********************/
+    
+
+    .contenedor-presentacion{
+
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+    }
+
+    .contenedor-presentacion h1{
+
+        font-size: 35px;
+    }
+
+  
+
+
+    /*****************************************************/
+    /****************** Presentacion *********************/
+
+
+    .contenedor-diccionario{
+
+        padding-left: 50px;
+        padding-right: 50px;
+        width: 100%;
+    }
+
+    .contenedor-diccionario h2{
+
+        font-size: 35px;
+        padding: 0px;
+        padding-bottom: 30px;
+    }
+
+    .presentacion-diccionario{
+
+        width: 100%;
+        height: 360px;
+        overflow-y: hidden;
+
+    }
+
+    .presentacion-diccionario .texto{
+
+        width: 80%;
+        height: 80%;
+        overflow-y: scroll;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .presentacion-diccionario .texto h3{
+
+        font-size: 20px;
+    }
+
+    .presentacion-diccionario .texto p{
+
+        padding: 5px;
+    }
+
+
+    /************************ Texto *********************/
+
+    .folio{
+
+        padding: 0;
+    }
+
+    .container{
+
+        display: flex;
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        justify-content: center;
+    }
+
+    .folio-traducido{
+
+        width: 98%;
+        padding: 20px;
+        background-color: white;
+    }
+
+    .folio-traducido p{
+
+        font-family: "AGaramondPro";
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    .folio-imagen{
+
+        display: none;
+    }
+
+
+    .contenedor-opciones{
+
+        padding-top: 30px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .contenedor-opciones h3{
+
+        font-weight: normal;
+        font-size: 20px;
+    }
+
+    .contenedor-opciones h4, .contenedor-opciones label{
+
+        font-size: 15px;
+    }
+
+    .contenedor-opciones .info{
+
+        width: 100%;
+    }
+
+    .contenedor-opciones .info-opciones{
+
+        display: none;
+    }
+
+    .contenedor-opciones .info-opciones .opciones form{
+
+        display: flex;
+        gap: 25px;
+        width: 100%;
+    }
+
+
+    .contenedor-titulo{
+
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .contenedor-titulo h2{
+
+        width: 50%;
+    }
+
+    .boton-manuscrito{
+
+        display: flex;
+    }
+
+    /*********************************************************/
+    /********************* Paginacion ************************/
+
+    .contenedor-links{
+
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    /*********************************************************/
+    /********************* Creditos ************************/
+
+    .credito h4{
+
+        font-family: "AGaramondPro";
+        font-size: 15px;
+        font-weight: lighter;
+    }
+    
+    .credito h3{
+    
+        font-family: "AGaramondProBold";
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    .credito:first-child h3{
+
+        font-size: 25px;
+    }
+
+    
+
+}
+/*IPAD*/
+@media screen and (min-width: 810px) and (max-width: 850px){
+    
+    /*****************************************************/
+    /********************* Header ************************/
+
+    .menu ul{
+
+        gap: 40px;
+    }
+
+    /*****************************************************/
+    /****************** Presentacion *********************/
+
+    .contenedor-diccionario{
+
+        width: 95%;
+    }
+
+    .presentacion-diccionario{
+
+        height: 430px;
+    }
+
+    .contenedor-opciones{
+
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /*****************************************************/
+    /****************** Texto *********************/
+
+    .folio-traducido{
+
+        height: 424px;
+    }
+    
+    
+    .folio-imagen{
+    
+        height: 424px;
+    }
+
+    .folio-traducido p{
+
+        font-family: "AGaramondPro";
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    .folio-imagen img{
+
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media screen and (min-width: 851px) and (max-width: 1080px){
+    
+    /*****************************************************/
+    /********************* Header ************************/
+
+    .menu ul{
+
+        gap: 40px;
+    }
+
+    /*****************************************************/
+    /****************** Presentacion *********************/
+
+    .contenedor-diccionario{
+
+        width: 95%;
+    }
+
+    .presentacion-diccionario{
+
+        height: 430px;
+    }
+
+    /*****************************************************/
+    /****************** Texto *********************/
+
+    .folio-traducido{
+
+        height: 424px;
+    }
+    
+    
+    .folio-imagen{
+    
+        height: 424px;
+    }
+
+    .folio-traducido p{
+
+        font-family: "AGaramondPro";
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    .folio-imagen img{
+
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
