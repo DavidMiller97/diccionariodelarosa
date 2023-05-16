@@ -392,7 +392,7 @@ INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'tercera orden sera
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Ayudar a bien morir vease fuente',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Amor de Dios. V. S[an] Fran[cis]co de Sales_ Fonseca_ Estela',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Acciones virtutis vide Rosignoli',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (34, 'Anonumo Minorita Subida del monte Sion______ Num 35 Pag 252',2);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Anonumo Minorita Subida del monte Sion______ Num 35 Pag 252',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, '*Apparitiones Spirituum Vide Thyrraeum',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Aranjuez de la alma vease Tolosa',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Apolog[í]a Perfectionis vitae Spiei* v. fr[ay] Nicol[as]',2);
@@ -402,9 +402,9 @@ INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Amoraga instrucc[i
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'item su instruc[ció]n sobre el Padre Nuestro______ Num 58',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (32, 'Arnaya conferencias espirituales 1. 2. 3______ a Num 60',2);
 /*33***********************************************************************/
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Misticos y Devocionarios', 1);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Autor[e]s o titulos Sub. Litt. A___ Estant[e]s y Marcas Numeros Inventario', 1);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Prosiguen los Misticos', 1);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, '<p class="titulo">Misticos y Devocionarios</p>', 1);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, '<p class="titulo">Autor[e]s o titulos Sub. Litt. A___ Estant[e]s y Marcas Numeros Inventario</p>', 1);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, '<p class="titulo">Prosiguen los Misticos</p>', 1);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Arte de servir a Dios vease Solis',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Antonio (P[adre] Fran[cis]co) sobre los mister[i]os de la Missa Quarto menor_Num 69 Pag 253',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (33, 'Agricultura de la alma vease Rodrig[ue]z',2);
@@ -528,14 +528,8 @@ INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, '<p class="titulo">
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, '<p class="titulo">Prosiguen historiales</p>', 1);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, '*Apolog[í]a super Authore catenae Aur vide Perez____ Octav[o] menor',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'ç Acosta (Josepho Jesuita) de situ orbis Novi_____Octavo Menor Num 55 Pag 296',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Annales Peneralmente ecclesiasticos y Seculares',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'veanse los Apellidos_ Baronio__ Saliano',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Illescas y demas Authores de las hisrotia',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Pontifical_ Carrillo_ Gautruche_ Briesio',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Pagi_ Pineda_ Argaiz',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Annales franciascanos vease Vuaelingo',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Aroldo= Gonzaga_ Roxas= fr[ay] Apolin/o',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Lisboa',2);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Annales Peneralmente ecclesiasticos y Seculares veanse los Apellidos_ Baronio__ Saliano Illescas y demas Authores de las hisrotia Pontifical_ Carrillo_ Gautruche_ Briesio_ Pagi_ Pineda_ Argaiz',2);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Annales franciascanos vease Vuaelingo Aroldo= Gonzaga_ Roxas= fr[ay] Apolin/o Lisboa',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Annales Particulares vease Roman_ fr[ay] Pablo de S[an] Nicol[as]',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Apologias quedan apuntadas en sus Lugares las remisiones a sus Autores Y las materias',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (38, 'Apariciones de sagradas Imagines vease Santuarios',2);
@@ -599,8 +593,7 @@ INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Anemologiae de sig
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Arithmetica v. Perez Moya',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Axedrez su invencion v. Segura',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Afferden Atlas abreviado______ Octav[o] Mayor Num 1 Pag 313',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Arithm[éti]ca Algebra, Architectura Artilleria',2);
-INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Astronomia Astrolog[í]a vease tosca',2);
+INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Arithm[éti]ca Algebra, Architectura Artilleria Astronomia Astrolog[í]a vease tosca',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Astrolobii su fabrica v. Stoferino',2);
 INSERT INTO texto (folio_id, contenido, tipo_id) VALUES (41, 'Anagramata numeralia a N[uestra] S[eñor]a v. Rernedo',2);
 /*42***********************************************************************/

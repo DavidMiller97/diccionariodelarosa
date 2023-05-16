@@ -35,9 +35,14 @@ Route::get('/libro/{texto_id}', function ($texto_id) {
 
     $texto = $textos->find($texto_id);
 
-    $libro = $texto->libro;
-   
-    return new LibroResource($libro);
+    $libros = $texto->libros;
+
+    if(count($libros) > 0) {
+        return LibroResource::collection($libros);
+    }
+
+    abort(404);
+
 });
 /*Buscador*/
 Route::post('/buscar', [LibroController::class, 'buscar'])->name('buscar');

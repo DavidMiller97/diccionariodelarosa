@@ -185,6 +185,8 @@ $(document).ready(function() {
     });
 
     //Regsitros**********************************************************************************************
+    
+
     $('.registro').click(function(){
 
         $("#preloader-busqueda").css('display', 'flex');
@@ -193,87 +195,126 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: `http://127.0.0.1:8001/libro/${id}`,
+            url: `http://fraydelarosa.equiguas.mx/libro/${id}`,
 
         }).then(function(data){
 
             //Limpiar modal
             $('#modal-libro .informacion').empty();
             $('#modalLibro').toggleClass('active');
+            let ul = $('<ul></ul>', {id: 'tabs', class: 'etiquetas'});
 
-            const {nombre, autor, localizacion, marca, estante, libro_id, noInventario, noPaginas} = data.data;
-            const { libros } = autor;
+            if(data.data.length > 1){
 
-            //Autor
-            if(autor){
+                data.data.forEach(function(registro){
 
-                let h3 = $('<h3></h3>', {id: 'autor'});
-
-                h3.html(`<span>Autor: </span>${autor.nombre}`);
-
-                h3.appendTo('#modal-libro .informacion');
-            }
-
-            $('<h3></h3>', {text: 'Libro:'}).appendTo('#modal-libro .informacion');
-            let div = $('<div></div>', {class: 'info-libro'});
-
-            //Nombre libro
-            if(nombre) $('<h4></h4>').html(`<span>Titulo: </span>${nombre}`).appendTo(div);
-            //Marca
-            if(marca) $('<h4></h4>').html(`<span>Marca: </span>${marca.nombre}`).appendTo(div);
-            //Estante
-            if(estante) $('<h4></h4>').html(`<span>Estante: </span>${estante.nombre}`).appendTo(div);
-            //No paginas
-            if(noPaginas) $('<h4></h4>').html(`<span>No. Páginas: </span>${noPaginas}`).appendTo(div);
-            //Inventario
-            if(noInventario) $('<h4></h4>').html(`<span>Inventario: </span>${noInventario}`).appendTo(div);
-
-            //Localizacion
-            if(localizacion){
-
-                $('<h4></h4>').html('<span>Localizacion</span>').appendTo(div);
-
-                let divLoalizacion = $('<div></div>', {class: 'info-localizacion'});
-
-                $('<h4></h4>').html(`<span>Nombre:</span> ${localizacion.nombre}`).appendTo(divLoalizacion);
-                //Pais
-                if(localizacion.pais) $('<h4></h4>').html(`<span>Pais: </span>${localizacion.pais.nombre}`).appendTo(divLoalizacion);
-                //URL
-                if(localizacion.direccion_url) $('<h4></h4>').html(`<a href="${localizacion.direccion_url}" target="_blank"><span>Link</span></a>`).appendTo(divLoalizacion);
-
-                divLoalizacion.appendTo(div);
-            }
-
-            div.appendTo('#modal-libro .informacion');
-
-
-            //Mas libros del autor
-            if(libros && libros.length > 1){
-
-                $('<h3></h3>', {text: 'Más libros del Autor:'}).appendTo('#modal-libro .informacion');
-
-                let divLibros = $('<div></div>', {class: 'libros'});
-                let a;
-                let ul = $('<ul></ul>');
-                let li;
-
-                libros.forEach(function(libro){
-
-                    if(libro_id != libro.libro_id){
-
-                        li = $('<li></li>');
-                        a = $('<a></a>', {text: `${libro.nombre}`, href: `http://127.0.0.1:8001/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
-                    
-                        a.appendTo(li);
-                        li.appendTo(ul);
-                    }        
-    
+                    let li = $('<li></li>');
+                    let a = $('<a></a>', {href: '#libro' + registro.libro_id, text: 'libro' + registro.libro_id});
+                    a.appendTo(li);
+                    li.appendTo(ul);
+                    ul.appendTo('#modal-libro .informacion');
                 });
+            }
 
-                ul.appendTo(divLibros);
+            
+            data.data.forEach(function(registro){
 
-                divLibros.appendTo('#modal-libro .informacion');
 
+                const {nombre, autor, localizacion, marca, estante, libro_id, noInventario, noPaginas} = registro;
+                const { libros } = autor;
+
+                let divLibro = $('<div></div>', {id: 'libro' + libro_id, class:'mostrar'});
+
+                //Autor
+                if(autor){
+
+                    let h3 = $('<h3></h3>', {id: 'autor'});
+
+                    h3.html(`<span>Autor: </span>${autor.nombre}`);
+
+                    h3.appendTo(divLibro);
+                }
+
+                $('<h3></h3>', {text: 'Libro:'}).appendTo(divLibro);
+                let div = $('<div></div>', {class: 'info-libro'});
+
+                //Nombre libro
+                if(nombre) $('<h4></h4>').html(`<span>Titulo: </span>${nombre}`).appendTo(div);
+                //Marca
+                if(marca) $('<h4></h4>').html(`<span>Marca: </span>${marca.nombre}`).appendTo(div);
+                //Estante
+                if(estante) $('<h4></h4>').html(`<span>Estante: </span>${estante.nombre}`).appendTo(div);
+                //No paginas
+                if(noPaginas) $('<h4></h4>').html(`<span>No. Páginas: </span>${noPaginas}`).appendTo(div);
+                //Inventario
+                if(noInventario) $('<h4></h4>').html(`<span>Inventario: </span>${noInventario}`).appendTo(div);
+
+                //Localizacion
+                if(localizacion){
+
+                    $('<h4></h4>').html('<span>Localizacion</span>').appendTo(div);
+
+                    let divLoalizacion = $('<div></div>', {class: 'info-localizacion'});
+
+                    if(localizacion.nombre) $('<h4></h4>').html(`<span>Nombre:</span> ${localizacion.nombre}`).appendTo(divLoalizacion);
+                    //Pais
+                    if(localizacion.pais) $('<h4></h4>').html(`<span>Pais: </span>${localizacion.pais.nombre}`).appendTo(divLoalizacion);
+                    //URL
+                    if(localizacion.direccion_url) $('<h4></h4>').html(`<a href="${localizacion.direccion_url}" target="_blank"><span>Link</span></a>`).appendTo(divLoalizacion);
+
+                    divLoalizacion.appendTo(div);
+                }
+
+                div.appendTo(divLibro);
+
+
+                //Mas libros del autor
+                if(libros && libros.length > 1){
+
+                    $('<h3></h3>', {text: 'Más libros del Autor:'}).appendTo(divLibro);
+
+                    let divLibros = $('<div></div>', {class: 'libros'});
+                    let a;
+                    let ul = $('<ul></ul>');
+                    let li;
+
+                    libros.forEach(function(libro){
+
+                        if(libro_id != libro.libro_id){
+
+                            li = $('<li></li>');
+                            a = $('<a></a>', {text: `${libro.nombre}`, href: `http://fraydelarosa.equiguas.mx/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
+                        
+                            a.appendTo(li);
+                            li.appendTo(ul);
+                        }        
+        
+                    });
+
+                    ul.appendTo(divLibros);
+
+                    divLibros.appendTo(divLibro);
+                }
+
+                divLibro.appendTo('#modal-libro .informacion');
+
+            });
+
+            if(data.data.length > 1){
+
+                $('.etiquetas li:first').addClass('etiquetaActive');
+                $('.informacion .mostrar').hide();
+                $('.informacion .mostrar:first').show();
+
+                $('.etiquetas li a').click(function(){
+                    $('.etiquetas li').removeClass('etiquetaActive');
+                    $(this).parent().addClass('etiquetaActive');
+                    $('.informacion .mostrar').hide();
+            
+                    var activeTab = $(this).attr('href');
+                    $(activeTab).show();
+                    return false;
+                });
             }
 
             $("#preloader-busqueda").css('display', 'none');
@@ -324,7 +365,7 @@ function buscar(){
                 
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: `http://127.0.0.1:8001/buscar`, 
+            url: `http://fraydelarosa.equiguas.mx/buscar`, 
             data: {nombre: nombre}
 
         }).then(function(data){
@@ -356,7 +397,7 @@ function buscar(){
                                 return {
                                     ...libro,
                                     id: index+1,
-                                    url: `http://127.0.0.1:8001/folio?page=${libro.folio_id}&marca=${libro.texto_id}`,
+                                    url: `http://fraydelarosa.equiguas.mx/folio?page=${libro.folio_id}&marca=${libro.texto_id}`,
 
                                 }
 
@@ -371,7 +412,7 @@ function buscar(){
                             autor.libros.forEach(libro => {
 
                                 li_libro = $('<li></li>');
-                                a = $('<a></a>', {text: `${libro.nombre}`, href: `http://127.0.0.1:8001/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
+                                a = $('<a></a>', {text: `${libro.nombre}`, href: `http://fraydelarosa.equiguas.mx/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
 
                                 a.appendTo(li_libro);
                                 li_libro.appendTo(ulLibros);
@@ -402,7 +443,7 @@ function buscar(){
                 libros.forEach(function(libro){
 
                     li = $('<li></li>');
-                    a = $('<a></a>', {text: `${libro.nombre}`, href: `http://127.0.0.1:8001/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
+                    a = $('<a></a>', {text: `${libro.nombre}`, href: `http://fraydelarosa.equiguas.mx/folio?page=${libro.folio_id}&marca=${libro.texto_id}`});
 
                     a.appendTo(li);
                     li.appendTo(ul);

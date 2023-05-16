@@ -22,9 +22,9 @@ class Texto extends Model
         return $this->belongsTo(Folio::class, 'folio_id', 'folio_id');
     }
 
-    public function libro(){
+    public function libros(){
 
-        return $this->hasOne(Libro::class, 'texto_id', 'texto_id');
+        return $this->hasMany(Libro::class, 'texto_id', 'texto_id');
     }
 
     

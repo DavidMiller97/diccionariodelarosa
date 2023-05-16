@@ -1172,6 +1172,27 @@ body{
       
   }
 
+  .etiquetas{
+      width: 100%;
+      list-style: none;
+      display: flex;
+      background-color: #ccc;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+  }
+
+  .etiquetas li {
+      padding: 2rem;
+  }
+
+  .etiquetas li a {
+      width: 100%;
+  }
+
+  .etiquetaActive {
+      background-color: white;
+  }
+
 /*********************************************************************************************************/
 /****************************************   Media Queries    *********************************************/
 /**********************************************************************************************************/
